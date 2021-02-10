@@ -1,19 +1,16 @@
-// ID успешной посылки: 48084304
+// ID успешной посылки: 48177718
 
-var readline = require('readline');
-var rl = readline.createInterface({
+let readline = require('readline');
+let rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
     terminal: false
 });
 
-var lineIndex = 0
-var numberOfKeys = 0
+let lineIndex = 0
+let numberOfKeys = 0
 
-// . 1 2 3 4 5 6 7 8 9
-var symbolsAtIndex = Array(10).fill(0)
-// console.log(`initial symbolsAtIndex:`)
-// console.log(symbolsAtIndex)
+let symbolsAtIndex = Array(10).fill(0)
 
 rl.on('line', function (line) {
 
@@ -22,8 +19,8 @@ rl.on('line', function (line) {
         numberOfKeys = parseInt(line)
 
     } else { // input
-        var array = line.split('')
-        var index = 0
+        let array = line.split('')
+        let index = 0
         array.forEach(value => {
             if (value == '.') { // not a number, so go on to the next one
                 return
@@ -31,12 +28,10 @@ rl.on('line', function (line) {
                 index = parseInt(value)
             }
             symbolsAtIndex[index] = symbolsAtIndex[index] + 1
-            // console.log(`symbolsAtIndex after input: ${symbolsAtIndex}`)
         })
 
         if (lineIndex == 4) { // last line & output
-            // final calculations
-            var output = 0
+            let output = 0
             symbolsAtIndex.forEach((numberOfOccurences, index) => {
                 if (numberOfOccurences <= numberOfKeys * 2 && numberOfOccurences != 0) {
                     output += 1
